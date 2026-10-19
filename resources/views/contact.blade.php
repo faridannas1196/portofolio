@@ -5,7 +5,7 @@
         <div class="items-center lg:-mx-6">
             <div class="lg:w-1/2 lg:mx-6">
                 <h1 class="text-2xl font-semibold text-blue-900 capitalize dark:text-white lg:text-3xl">
-                   Kontak kami untuk<br> informasi lebih lanjut
+                   Kontak saya untuk<br> informasi lebih lanjut
                 </h1>
 
                 <div class="mt-6 flex flex-col space-y-8 md:mt-8 md:flex-row md:space-y-0 md:space-x-8">

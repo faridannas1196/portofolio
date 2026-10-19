@@ -11,7 +11,8 @@
               <x-nav-link href="/about">About</x-nav-link>|
               <x-nav-link href="/portofolio">Portofolio</x-nav-link>|
               <x-nav-link href="/blog">Blog</x-nav-link>|
-              <x-nav-link href="/contact">Contact Us</x-nav-link>
+              <x-nav-link href="/contact">Contact Us</x-nav-link>|
+              <x-nav-link href="/manage">Kelola Konten</x-nav-link>
           </div>
           
           </div>
@@ -63,7 +64,7 @@
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <x-nav-link href="/">Home</x-nav-link>
+        <x-nav-link href="/">Dashboard</x-nav-link>
         <x-nav-link href="/about">About</x-nav-link>
         <x-nav-link href="/portofolio">Portofolio</x-nav-link>
         <x-nav-link href="/blog">Blog</x-nav-link>
