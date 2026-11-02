@@ -1,19 +1,6 @@
 <x-layout>
   <x-slot:header>{{ $header }}</x-slot:header>
 
-  <div class="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-blue-50 p-5 text-blue-950">
-    <div>
-      <p class="font-semibold">Kelola konten portofolio</p>
-      <p class="mt-1 text-sm text-blue-900">Pilih entitas untuk melihat data, lalu edit atau tambahkan record.</p>
-    </div>
-    <nav class="flex flex-wrap gap-2 text-sm font-medium">
-      <a href="#home" class="rounded-lg bg-white px-3 py-2 text-blue-900 shadow-sm hover:bg-blue-100">Home</a>
-      <a href="#about" class="rounded-lg bg-white px-3 py-2 text-blue-900 shadow-sm hover:bg-blue-100">About</a>
-      <a href="#portfolio" class="rounded-lg bg-white px-3 py-2 text-blue-900 shadow-sm hover:bg-blue-100">Portfolio</a>
-      <a href="#blog" class="rounded-lg bg-white px-3 py-2 text-blue-900 shadow-sm hover:bg-blue-100">Blog</a>
-    </nav>
-  </div>
-
   @if (session('status'))
     <div class="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800" role="status">
       {{ session('status') }}
@@ -31,40 +18,17 @@
     </div>
   @endif
 
-  <section id="home" x-data="{ adding: false }" class="mb-10 scroll-mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-4">
+  <section id="home" x-data="{ adding: false }" class="mb-10 scroll-mt-6 overflow-hidden rounded-xl border  bg-white shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b  bg-white-50 px-5 py-4">
       <div>
         <h2 class="text-xl font-bold text-blue-900">Home</h2>
-        <p class="mt-1 text-sm text-gray-600">Teks sambutan dan foto profil.</p>
       </div>
-      <button type="button" @click="adding = !adding" class="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800" x-text="adding ? 'Tutup form' : '+ Tambah Home'"></button>
     </div>
 
-    <div>
-      <form x-cloak x-show="adding" action="{{ route('manage.home.store') }}" method="POST" enctype="multipart/form-data" class="m-4 rounded-xl border border-blue-100 bg-blue-50/60 p-4">
-        @csrf
-        <h3 class="mb-4 font-semibold text-blue-900">Form tambah Home</h3>
-        <div class="grid gap-4 md:grid-cols-2">
-          <div>
-            <label for="home-content" class="mb-1 block text-sm font-medium text-gray-700">Teks sambutan</label>
-            <textarea id="home-content" name="content" rows="3" required class="w-full rounded-lg border border-slate-300 bg-white p-3 focus:border-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-100">{{ old('content') }}</textarea>
-          </div>
-          <div>
-            <label for="home-foto" class="mb-1 block text-sm font-medium text-gray-700">Foto profil</label>
-            <input id="home-foto" type="file" name="foto" accept="image/jpeg,image/png,image/webp" required class="block w-full rounded-lg border border-slate-300 bg-white p-2 text-sm file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-2 file:font-semibold file:text-blue-900">
-            <p class="mt-1 text-xs text-gray-500">JPG, PNG, atau WebP; maksimal 5 MB.</p>
-          </div>
-        </div>
-        <div class="mt-4 flex gap-2">
-          <button type="submit" class="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">Simpan</button>
-          <button type="button" @click="open = false" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-slate-100">Batal</button>
-        </div>
-      </form>
-    </div>
 
     <div class="overflow-x-auto">
-      <table class="w-full min-w-[700px] divide-y divide-slate-200 text-left text-sm">
-        <thead class="bg-white text-xs uppercase tracking-wide text-gray-500">
+      <table class="w-full min-w-[700px] divide-y text-left text-sm">
+        <thead class="bg-white text-xs uppercase tracking-wide text-blue-900">
           <tr>
             <th class="px-5 py-3 font-semibold">ID</th>
             <th class="px-5 py-3 font-semibold">Foto</th>
@@ -81,11 +45,6 @@
               <td class="px-5 py-4 text-right">
                 <div class="flex justify-end gap-2">
                   <button type="button" @click="editingId = editingId === {{ $item->id }} ? null : {{ $item->id }}" class="rounded-md border border-blue-200 px-3 py-1.5 font-medium text-blue-900 hover:bg-blue-50" x-text="editingId === {{ $item->id }} ? 'Tutup' : 'Edit'"></button>
-                  <form action="{{ route('manage.home.destroy', $item) }}" method="POST" onsubmit="return confirm('Hapus konten Home ini?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="rounded-md border border-red-200 px-3 py-1.5 font-medium text-red-700 hover:bg-red-50">Hapus</button>
-                  </form>
                 </div>
               </td>
             </tr>
@@ -122,12 +81,10 @@
   </section>
 
   <section id="about" x-data="{ adding: false }" class="mb-10 scroll-mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200  px-5 py-4">
       <div>
         <h2 class="text-xl font-bold text-blue-900">About</h2>
-        <p class="mt-1 text-sm text-gray-600">Profil, pendidikan, dan kemampuan.</p>
       </div>
-      <button type="button" @click="adding = !adding" class="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800" x-text="adding ? 'Tutup form' : '+ Tambah About'"></button>
     </div>
 
     <div>
@@ -188,10 +145,9 @@
   </section>
 
   <section id="portfolio" x-data="{ adding: false }" class="mb-10 scroll-mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
       <div>
         <h2 class="text-xl font-bold text-blue-900">Portfolio</h2>
-        <p class="mt-1 text-sm text-gray-600">Judul proyek, deskripsi, tautan, dan foto.</p>
       </div>
       <button type="button" @click="adding = !adding" class="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800" x-text="adding ? 'Tutup form' : '+ Tambah Portfolio'"></button>
     </div>
@@ -262,8 +218,7 @@
   <section id="blog" x-data="{ adding: false }" class="mb-10 scroll-mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
     <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-4">
       <div>
-        <h2 class="text-xl font-bold text-blue-900">Blog</h2>
-        <p class="mt-1 text-sm text-gray-600">Judul, subjudul, dan isi artikel.</p>
+        <h2 class="text-xl font-bold text-blue-900">Experience</h2>
       </div>
       <button type="button" @click="adding = !adding" class="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800" x-text="adding ? 'Tutup form' : '+ Tambah Blog'"></button>
     </div>

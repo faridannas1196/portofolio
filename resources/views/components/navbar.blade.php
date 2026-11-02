@@ -10,9 +10,8 @@
               <x-nav-link href="/">Home</x-nav-link>|
               <x-nav-link href="/about">About</x-nav-link>|
               <x-nav-link href="/portofolio">Portofolio</x-nav-link>|
-              <x-nav-link href="/blog">Blog</x-nav-link>|
+              <x-nav-link href="/blog">Experience</x-nav-link>|
               <x-nav-link href="/contact">Contact Us</x-nav-link>|
-              <x-nav-link href="/manage">Kelola Konten</x-nav-link>
           </div>
           
           </div>
